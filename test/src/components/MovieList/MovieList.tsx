@@ -3,25 +3,29 @@ import MovieListItem from "../MovieListItem";
 
 const StyleMovieList = styled.div`
     padding: 0;
-    margin: 0;
+    margin: auto;
     max-width: 900px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
     padding: 5px;
-    justify-content: flex-start;
+    justify-content: center;
 `;
 
 type Props = {
-    movies: any[];
+    movies: Movie[];
+    handleMovieClick: (movie: Movie) => void;
 };
 
 const MovieList = (props: Props) => {
-    const { movies } = props;
+    const { movies, handleMovieClick } = props;
     return (
         <StyleMovieList>
             {movies?.map((movie) => (
-                <MovieListItem key={movie?.id} movie={movie} />
+                <MovieListItem
+                    key={movie?.id}
+                    movie={movie}
+                    handleMovieClick={handleMovieClick}
+                />
             ))}
         </StyleMovieList>
     );

@@ -1,8 +1,20 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import { fetchPopularMovies } from "../../utils";
 import MovieList from "../MovieList";
 
-const HomePage = () => {
+const StyledHomePage = styled.div`
+    margin: 0;
+    height: 100%;
+    background-color: ${({ theme }) => theme.background};
+`;
+
+type Props = {
+    handleMovieClick: (movie: Movie) => void;
+};
+
+const HomePage = (props: Props) => {
+    const { handleMovieClick } = props;
     const [popularMovies, setPopularMovies] = useState([]);
 
     useEffect(() => {
@@ -14,9 +26,12 @@ const HomePage = () => {
     }, []);
 
     return (
-        <div>
-            <MovieList movies={popularMovies} />
-        </div>
+        <StyledHomePage>
+            <MovieList
+                movies={popularMovies}
+                handleMovieClick={handleMovieClick}
+            />
+        </StyledHomePage>
     );
 };
 
