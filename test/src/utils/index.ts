@@ -11,3 +11,14 @@ export const fetchPopularMovies = async () => {
         console.error(err);
     }
 };
+
+export const searchMovie = async (query: string) => {
+    try {
+        const response = await axios.get(`${TMDB_URL}/3/search/movie`, {
+            params: { api_key: TMDB_API_KEY, query },
+        });
+        return response?.data?.results;
+    } catch (err) {
+        console.error(err);
+    }
+};

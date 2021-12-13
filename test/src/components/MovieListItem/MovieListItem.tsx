@@ -18,7 +18,8 @@ const StyledTooltip = styled.span`
     border-radius: 2px;
 `;
 const StyledImg = styled.img`
-    width: 150px;
+    height: 220px;
+    object-fit: contain;
     &:hover + ${StyledTooltip} {
         display: block;
     }
